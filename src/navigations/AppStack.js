@@ -12,7 +12,7 @@ import {colors} from '../utils';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const AppStack = () => {
+const AppStack = ({navigation}) => {
   const dispatch = useDispatch();
   const logout = async () => {
     await AsyncStorage.clear();
@@ -20,6 +20,7 @@ const AppStack = () => {
       type: 'REMOVE_TOKEN',
     };
     dispatch(tokenAction);
+    // navigation.navigate('AuthStack');
   };
 
   return (

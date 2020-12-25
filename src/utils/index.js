@@ -4,6 +4,7 @@ export const colors = {
   red: '#FF4747',
   yellow: '#E9C46A',
   pink: '#FFD6D6',
+  coral: '#FF8585',
   borderGray: '#ABA4B7',
   dimGray: '#6B6B76',
   jetBlack: '#2E2E33',

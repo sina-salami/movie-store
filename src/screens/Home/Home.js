@@ -82,7 +82,9 @@ const Home = ({navigation}) => {
                   <Text style={styles.title}>
                     {item.title} - {item.date_of_release.split('-')[0]}
                   </Text>
-                  <Text style={styles.director}>{item.director}</Text>
+                  <Text style={styles.director}>
+                    {item.director.split(': ')[1]}
+                  </Text>
                 </View>
               );
             }}

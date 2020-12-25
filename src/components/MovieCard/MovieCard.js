@@ -53,13 +53,11 @@ const MovieCard = ({movie, index, width, height, noMargin}) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 200,
-    height: 120,
     padding: 5,
     borderRadius: 10,
     flexDirection: 'column',
     justifyContent: 'space-around',
-    backgroundColor: colors.red,
+    backgroundColor: colors.coral,
   },
   title: {
     fontSize: 18,
@@ -76,6 +74,7 @@ const styles = StyleSheet.create({
   },
   tagWrapper: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
   },
   tag: {
     fontSize: 12,

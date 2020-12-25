@@ -23,7 +23,7 @@ const MovieList = ({route}) => {
   }, [name]);
 
   const renderItem = ({item}) => {
-    return <MovieCard movie={item} width={300} height={150} noMargin />;
+    return <MovieCard movie={item} width={300} height={120} noMargin />;
   };
 
   const getNewMovies = () => {

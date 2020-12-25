@@ -31,6 +31,7 @@ const Login = (props) => {
           dispatch(action);
         } else {
           setError(res.body);
+          setLoading(false);
         }
       })
       .catch((err) => {
