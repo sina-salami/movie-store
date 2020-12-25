@@ -20,7 +20,7 @@ const SearchTextInput = ({onChangeText, value, ...props}) => {
         style={[
           styles.input,
           {
-            borderColor: focused ? colors.orange : colors.borderGray,
+            borderColor: focused ? colors.red : colors.borderGray,
           },
         ]}
         placeholder={props.placeholder}

@@ -4,7 +4,6 @@ import Button from './Button/Button';
 import ErrorText from './ErrorText/ErrorText';
 import Carousel from './Carousel/Carousel';
 import MovieCard from './MovieCard/MovieCard';
-import MovieListItem from './MovieListItem/MovieListItem';
 
 export {
   FloatTextInput,
@@ -13,5 +12,4 @@ export {
   ErrorText,
   Carousel,
   MovieCard,
-  MovieListItem,
 };

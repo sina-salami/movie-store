@@ -1,13 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {
-  View,
-  FlatList,
-  Text,
-  StyleSheet,
-  ActivityIndicator,
-} from 'react-native';
+import {View, FlatList, StyleSheet, ActivityIndicator} from 'react-native';
 
-import {MovieListItem} from '../../components';
+import {MovieCard} from '../../components';
 import {colors, sendRequest} from '../../utils';
 
 const MovieList = ({route}) => {
@@ -29,7 +23,7 @@ const MovieList = ({route}) => {
   }, [name]);
 
   const renderItem = ({item}) => {
-    return <MovieListItem movie={item} />;
+    return <MovieCard movie={item} width={300} height={150} noMargin />;
   };
 
   const getNewMovies = () => {

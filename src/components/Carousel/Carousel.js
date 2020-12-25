@@ -12,7 +12,7 @@ import {colors} from '../../utils';
 
 const Carousel = ({data, label, style, loading, error}) => {
   const renderItem = ({item, index}) => {
-    return <MovieCard movie={item} index={index} />;
+    return <MovieCard movie={item} index={index} width={200} height={120} />;
   };
 
   return (

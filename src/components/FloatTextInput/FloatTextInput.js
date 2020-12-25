@@ -21,10 +21,13 @@ const FloatTextInput = ({onChangeText, value, ...props}) => {
     inputRange: [0, 1],
     outputRange: [13, 40],
   });
-
   const fontSize = place.interpolate({
     inputRange: [0, 1],
     outputRange: [18, 12],
+  });
+  const color = place.interpolate({
+    inputRange: [0, 1],
+    outputRange: [colors.dimGray, colors.red],
   });
 
   const onFocus = useCallback(() => {
@@ -54,7 +57,7 @@ const FloatTextInput = ({onChangeText, value, ...props}) => {
   return (
     <View style={[styles.container, props.style]}>
       <Animated.Text
-        style={[styles.label, {bottom, fontSize}]}
+        style={[styles.label, {bottom, fontSize, color}]}
         onPress={() => ref.current.focus()}>
         {props.label}
       </Animated.Text>
@@ -65,7 +68,7 @@ const FloatTextInput = ({onChangeText, value, ...props}) => {
         maxLength={props.maxLength}
         style={[
           styles.input,
-          {borderColor: focused ? colors.orange : colors.borderGray},
+          {borderColor: focused ? colors.red : colors.borderGray},
         ]}
         onFocus={onFocus}
         onBlur={onBlur}
@@ -94,8 +97,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   label: {
-    backgroundColor: colors.lavender,
-    color: colors.dimGray,
+    backgroundColor: colors.pink,
     position: 'absolute',
     left: 10,
     paddingHorizontal: 2,

@@ -1,11 +1,9 @@
 import store from '../redux/store/store';
 
 export const colors = {
-  darkGreen: '#2D5362',
-  blueGreen: '#9EE5DD',
+  red: '#FF4747',
   yellow: '#E9C46A',
-  orange: '#F4A261',
-  lavender: '#EAE8FF',
+  pink: '#FFD6D6',
   borderGray: '#ABA4B7',
   dimGray: '#6B6B76',
   jetBlack: '#2E2E33',

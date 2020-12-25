@@ -1,8 +1,10 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {Button, StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
+import AsyncStorage from '@react-native-community/async-storage';
+import {useDispatch} from 'react-redux';
 
 import {Home, CategoryList, MovieList} from '../screens';
 import {colors} from '../utils';
@@ -11,22 +13,39 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const AppStack = () => {
+  const dispatch = useDispatch();
+  const logout = async () => {
+    await AsyncStorage.clear();
+    const tokenAction = {
+      type: 'REMOVE_TOKEN',
+    };
+    dispatch(tokenAction);
+  };
+
   return (
     <Stack.Navigator
       initialRouteName={'Home'}
       screenOptions={{
         headerStyle: {
-          backgroundColor: colors.blueGreen,
+          backgroundColor: colors.red,
         },
-        headerTintColor: colors.darkGreen,
+        headerTintColor: colors.jetBlack,
         headerTitleStyle: {
           fontWeight: 'bold',
         },
         cardStyle: {
-          backgroundColor: colors.lavender,
+          backgroundColor: colors.pink,
         },
       }}>
-      <Stack.Screen name={'Home'} component={HomeStack} />
+      <Stack.Screen
+        name={'Home'}
+        component={HomeStack}
+        options={{
+          headerLeft: () => (
+            <Button title={'Logout'} onPress={logout} color={colors.jetBlack} />
+          ),
+        }}
+      />
       <Stack.Screen
         name={'Category'}
         component={MovieList}
@@ -40,8 +59,10 @@ const HomeStack = () => {
   return (
     <Tab.Navigator
       tabBarOptions={{
-        activeTintColor: colors.blueGreen,
+        activeTintColor: colors.red,
         inactiveTintColor: colors.dimGray,
+        activeBackgroundColor: colors.jetBlack,
+        inactiveBackgroundColor: colors.jetBlack,
       }}>
       <Tab.Screen
         name="Home"

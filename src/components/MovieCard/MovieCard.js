@@ -5,12 +5,23 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {colors} from '../../utils';
 
-const {width} = Dimensions.get('screen');
+const screenWidth = Dimensions.get('screen').width;
 
-const MovieCard = ({movie, index}) => {
+const MovieCard = ({movie, index, width, height, noMargin}) => {
   return (
     <View
-      style={[styles.container, {marginLeft: index ? width / 40 : width / 20}]}>
+      style={[
+        styles.container,
+        {
+          width,
+          height,
+          marginLeft: noMargin
+            ? 0
+            : index
+            ? screenWidth / 40
+            : screenWidth / 20,
+        },
+      ]}>
       <Text style={styles.title}>
         {movie.title} - {movie.date_of_release.split('-')[0]}
       </Text>
@@ -48,7 +59,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     flexDirection: 'column',
     justifyContent: 'space-around',
-    backgroundColor: colors.blueGreen,
+    backgroundColor: colors.red,
   },
   title: {
     fontSize: 18,

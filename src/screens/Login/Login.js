@@ -57,7 +57,7 @@ const Login = (props) => {
         title={'Login'}
         onPress={submit}
         style={styles.button}
-        titleColor={colors.darkGreen}
+        titleColor={colors.pink}
         loading={loading}
       />
       <View style={styles.keepWrapper}>
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   button: {
-    backgroundColor: colors.yellow,
+    backgroundColor: colors.jetBlack,
   },
   keepWrapper: {
     flexDirection: 'row',

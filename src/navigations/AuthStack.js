@@ -10,7 +10,7 @@ const AuthStack = () => {
     <Stack.Navigator
       screenOptions={{
         cardStyle: {
-          backgroundColor: colors.lavender,
+          backgroundColor: colors.pink,
           paddingHorizontal: '5%',
         },
         headerShown: false,
