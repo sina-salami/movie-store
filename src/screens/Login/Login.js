@@ -18,10 +18,8 @@ const Login = (props) => {
     setLoading(true);
     sendRequest('POST', '/user/auth-token', {username, password}, false)
       .then((res) => {
-        console.log(res);
         if (res.status === 200) {
           if (keep) {
-            console.log('hello');
             (async () => {
               await AsyncStorage.setItem('token', res.body.token);
             })();

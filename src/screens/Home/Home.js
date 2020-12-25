@@ -17,6 +17,8 @@ const Home = ({navigation}) => {
   const handleSearch = (txt) => {
     if (txt === '') {
       setSearchActive(false);
+    } else {
+      setSearchActive(true);
     }
     setSearchValue(txt);
   };
@@ -26,10 +28,9 @@ const Home = ({navigation}) => {
       clearTimeout(timer.current);
     }
     timer.current = setTimeout(() => {
-      if (searchValue > 2) {
+      if (searchValue.length > 2) {
         sendRequest('GET', `/movie/?search=${searchValue}`)
           .then((res) => {
-            console.log(res);
             setSearchResult(res.body.results);
           })
           .catch((err) => {
@@ -44,7 +45,6 @@ const Home = ({navigation}) => {
     setLoading(true);
     sendRequest('GET', '/movie/')
       .then((res) => {
-        console.log(res);
         setNewMovies(res.body.results.filter((_, index) => index < 10));
         setMostMovies(
           res.body.results.filter((_, index) => index < 20 && index > 9),
@@ -76,7 +76,6 @@ const Home = ({navigation}) => {
             style={styles.list}
             contentContainerStyle={styles.listContainer}
             renderItem={({item}) => {
-              console.log(searchResult);
               return (
                 <View style={styles.movieWrapper}>
                   <Text style={styles.title}>

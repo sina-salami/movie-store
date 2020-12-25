@@ -7,21 +7,23 @@ import {
   ScrollView,
   ActivityIndicator,
 } from 'react-native';
+import {ErrorText} from '../../components';
 import {colors, sendRequest} from '../../utils';
 
 const CategoryList = ({navigation}) => {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [error, setError] = useState('');
   useEffect(() => {
     setLoading(true);
     sendRequest('GET', '/category')
       .then((res) => {
-        console.log(res);
         setCategories(res.body.results);
         setLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setError('Failed to fetch the list from the server.');
         setLoading(false);
       });
   }, []);
@@ -30,6 +32,8 @@ const CategoryList = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       {loading ? (
         <ActivityIndicator size={'large'} color={colors.jetBlack} />
+      ) : error ? (
+        <ErrorText error={error} />
       ) : (
         <ScrollView
           style={styles.scroller}

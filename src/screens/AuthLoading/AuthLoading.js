@@ -10,7 +10,6 @@ const AuthLoading = ({navigation}) => {
     let token;
     (async () => {
       token = await AsyncStorage.getItem('token');
-      console.log(token);
       if (token) {
         const tokenAction = {
           type: 'SET_TOKEN',
