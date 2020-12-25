@@ -14,7 +14,7 @@ const MovieList = ({route}) => {
   const [movies, setMovies] = useState([]);
   const [next, setNext] = useState(null);
   const [loading, setLoading] = useState(false);
-  const {name, id} = route.params;
+  const {name} = route.params;
 
   useEffect(() => {
     setLoading(true);

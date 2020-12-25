@@ -12,7 +12,7 @@ const Home = ({navigation}) => {
   const [mostMovies, setMostMovies] = useState([]);
   const [carouselError, setCarouselError] = useState('');
   const [loading, setLoading] = useState(false);
-  const timer = useRef();
+  const timer = useRef(); //Used for debouncing on search
 
   const handleSearch = (txt) => {
     if (txt === '') {
@@ -40,6 +40,8 @@ const Home = ({navigation}) => {
       }
     }, 300);
   }, [searchValue]);
+  /*An intermediate adult types 200 chars in a minute so he types a charachter in 300 ms.
+  if he waits more than that after typing a charachter we start searching.*/
 
   useEffect(() => {
     setLoading(true);
@@ -59,7 +61,7 @@ const Home = ({navigation}) => {
   }, []);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <SearchTextInput
         value={searchValue}
         onChangeText={handleSearch}
@@ -73,7 +75,6 @@ const Home = ({navigation}) => {
         ) : (
           <FlatList
             data={searchResult}
-            style={styles.list}
             contentContainerStyle={styles.listContainer}
             renderItem={({item}) => {
               return (
@@ -86,6 +87,7 @@ const Home = ({navigation}) => {
               );
             }}
             keyExtractor={(item) => item.id.toString()}
+            ListFooterComponent={() => <View style={styles.footer} />}
           />
         )
       ) : (
@@ -111,6 +113,9 @@ const Home = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   carousel: {
     marginTop: 50,
   },
@@ -136,6 +141,9 @@ const styles = StyleSheet.create({
   },
   seperator: {
     height: 5,
+  },
+  footer: {
+    height: 15,
   },
 });
 

@@ -1,13 +1,16 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Dimensions} from 'react-native';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {colors} from '../../utils';
 
-const MovieCard = ({movie}) => {
+const {width} = Dimensions.get('screen');
+
+const MovieCard = ({movie, index}) => {
   return (
-    <View style={styles.container}>
+    <View
+      style={[styles.container, {marginLeft: index ? width / 40 : width / 20}]}>
       <Text style={styles.title}>
         {movie.title} - {movie.date_of_release.split('-')[0]}
       </Text>
@@ -23,8 +26,8 @@ const MovieCard = ({movie}) => {
         {movie.tags && (
           <>
             <AntIcon name={'tags'} size={18} color={colors.jetBlack} />
-            {movie.tags.map((tag, index) => (
-              <Text style={styles.tag} key={`${movie.id}tag${index}`}>
+            {movie.tags.map((tag, i) => (
+              <Text style={styles.tag} key={`${movie.id}tag${i}`}>
                 {' '}
                 {tag}
                 {index !== movie.tags.length - 1 && ','}
@@ -46,7 +49,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-around',
     backgroundColor: colors.blueGreen,
-    marginLeft: 10,
   },
   title: {
     fontSize: 18,

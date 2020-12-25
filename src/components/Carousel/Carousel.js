@@ -11,8 +11,8 @@ import {ErrorText, MovieCard} from '../index';
 import {colors} from '../../utils';
 
 const Carousel = ({data, label, style, loading, error}) => {
-  const renderItem = ({item}) => {
-    return <MovieCard movie={item} />;
+  const renderItem = ({item, index}) => {
+    return <MovieCard movie={item} index={index} />;
   };
 
   return (
@@ -26,6 +26,7 @@ const Carousel = ({data, label, style, loading, error}) => {
         <FlatList
           data={data}
           horizontal
+          style={styles.list}
           renderItem={renderItem}
           ItemSeparatorComponent={() => <View style={styles.seperator} />}
           keyExtractor={(item) => item.id.toString()}
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: colors.jetBlack,
     fontWeight: 'bold',
-    marginLeft: 10,
+    marginLeft: '5%',
     marginBottom: 10,
   },
   seperator: {
